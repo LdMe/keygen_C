@@ -1,0 +1,18 @@
+
+
+INSTALL:
+
+run install.sh by terminal:
+
+
+ctrl + alt + t                   <----open terminal and type following commands
+
+
+cd <actual_directory>                 <-------example : cd /home/myuser/downloads/my_program/
+
+./install.sh
+
+
+PLAY:
+
+each turn you have to put only one character, put q to quit
