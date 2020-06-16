@@ -94,6 +94,7 @@ char *repair(char **str)
             for (int i = 0; i < str_len(str[0]); i++) {
                 if (is_num(str[0][i]) == 0) {
                     upper(&str[0][i]);
+                    break;
                 }
             }
         }
@@ -107,6 +108,7 @@ char *repair(char **str)
             for (int i = 0; i < str_len(str[0]); i++) {
                 if (is_num(str[0][i]) == 0) {
                     lower(&str[0][i]);
+                    break;
                 }
             }
         }
