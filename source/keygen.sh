@@ -19,7 +19,7 @@ if [ $# -lt 2 ]
 then
     echo "Private password:"
     read -s key
-    $path_ex $1 $key | xclip -sel clip
+    $path_ex $1 $key | xsel -i --clipboard
     exit 0
 fi
 

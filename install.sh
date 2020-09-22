@@ -5,6 +5,9 @@ description="Keygen for terminal"
 #first uninstall previous versions
 ./uninstall.sh 0
 echo -e "previous versions uninstalled\n"
+#install needed libraries 
+sudo apt install xsel
+echo -e "needed libraries installed"
 #then compile to get the binaries
 ./compile.sh $app_name
 echo -e "executable file compiled\n"

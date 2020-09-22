@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path=/home/dlm/EPITECH/installer
+path=/home/ldme/C/keygen_C
 #This step is to avoid possible errors because of spaces in directory names 
 path_clean=$(echo "$path" | sed -e 's/[[:space:]]/\\ /g')
 path_ex="$path_clean/bin/keygen"
@@ -19,7 +19,7 @@ if [ $# -lt 2 ]
 then
     echo "Private password:"
     read -s key
-    $path_ex $1 $key | xclip -sel clip
+    $path_ex $1 $key | xsel -i --clipboard
     exit 0
 fi
 
