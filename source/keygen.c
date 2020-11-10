@@ -70,6 +70,7 @@ int mcd(int x, int y)
 	int max,min;
 	if (x > y) {
 		max= x;
+        // min should be y, but it changes keys I'm currently using
 		min= x;
 	}
 	else if (y > x) {
