@@ -22,5 +22,10 @@ then
     $path_ex $1 $key | xsel -i --clipboard
     exit 0
 fi
+if [ $# -eq 2 ]
+then
+    $path_ex $1 $2 | xsel -i --clipboard
+    exit 0
+fi
 
 exit 1
