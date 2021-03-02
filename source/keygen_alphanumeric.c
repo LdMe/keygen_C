@@ -3,8 +3,8 @@
 ** File description:
 ** main keygen functions
 */
-#include "keygen.h"
-char *repair(char **str)
+#include "keygen_alphanumeric.h"
+char *repair_alphanumeric(char **str)
 {
 
     char *lista= "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -59,10 +59,12 @@ char *repair(char **str)
     }
     return str[0];
 }
-char *encrypt(char *word, char *key)
+char *encrypt_alphanumeric(char *word, char *key,unsigned int seed)
 {
 
     char *lista= "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    srand(seed);
+
     int len =  str_len(lista);
     int len1 = str_len(word);
     int len2 = str_len(key);
@@ -83,11 +85,13 @@ char *encrypt(char *word, char *key)
         str2 = key;
     }
     results[0] = malloc(sizeof(char) * (len1 + 1));
+    int randX = rand() % 100;
+    int randY = rand() % 100;
     for (int  i = 0; i < len1; i++) {
         int x = find(lista,str1[i]);
         int y = 0;
         y = find(lista, str2[i % len2]);
-        int z= (mcd(y+1,x+1) * abs(x-y)) % len;
+        int z= (mcd(y+randY,x+randX) * abs(x-y)) % len;
         results[0][i] =lista[z];
         if (is_mayus(lista[z])) {
             results[1]="t";
@@ -100,6 +104,6 @@ char *encrypt(char *word, char *key)
         }
     }
     
-    return (repair(results));
+    return (repair_alphanumeric(results));
     
 }
