@@ -220,9 +220,9 @@ char **encrypt(char *word, char *key,char *lista,unsigned int seed)
     int randX = rand() % 100;
     int randY = rand() % 100;
     for (int  i = 0; i < len1; i++) {
-        int x = find(lista,str1[i]);
+        int x = str1[i];
         int y = 0;
-        y = find(lista, str2[i % len2]);
+        y = str2[i % len2];
         int z= (mcd(y+randY,x+randX) * abs(x-y)) % len;
         results[0][i] =lista[z];
         if (is_upper(lista[z])) {

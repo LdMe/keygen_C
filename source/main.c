@@ -1,6 +1,7 @@
 #include "keygen_alphanumeric.h"
 #include "keygen_alphanumeric_symbol.h"
 #include "keygen.h" // classic
+#include "keygen_numeric.h"
 #include <string.h>
 int main(int argc, char **argv)
 {
@@ -13,13 +14,14 @@ int main(int argc, char **argv)
     unsigned int seed = 0;
     char *result = "";
     if( argc > 3) {
-    	printf("argv[3] %s\n", argv[3]);
+    	if(strcmp(argv[3], "n") == 0) {
+    		result = encrypt_numeric(pass1,pass2,seed); //numeric
+    	}
     	if(strcmp(argv[3], "an") == 0) {
-    		printf("alphanum\n");
-    		result = encrypt_alphanumeric(pass1,pass2,seed); //with seed
+    		result = encrypt_alphanumeric(pass1,pass2,seed); //alphanumeric
     	}
     	if(strcmp(argv[3], "ans") == 0) {
-    		result = encrypt_alphanumeric_symbol(pass1,pass2,seed); //with seed and symbols
+    		result = encrypt_alphanumeric_symbol(pass1,pass2,seed); //alphanumeric and symbols
     	}
     }
     else {
