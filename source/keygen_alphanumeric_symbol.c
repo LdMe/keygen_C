@@ -3,9 +3,9 @@
 ** File description:
 ** main keygen functions
 */
-#include "keygen_alphanumeric.h"
+#include "keygen_alphanumeric_symbol.h"
 
-char *repair_alphanumeric(char **str)
+char *repair_alphanumeric_symbol(char **str)
 {
     int charCount = 92;
     char firstChar = 33;
@@ -50,14 +50,14 @@ char *repair_alphanumeric(char **str)
         for (int i = 0; i < str_len(str[0]);i++) {
             if(is_upper(str[0][i]) == 1) {
                 if (upper == 1) {
-                    str[0][i] = str[0][i] % 10 + 48;
+                    str[0][i] = lista[find(lista,str[0][i]) % 10];
                     break;
                 }
                 upper = 1;
             }
             else {
                 if (lower == 1) {
-                    str[0][i] = str[0][i] % 10 + 48;
+                    str[0][i] = lista[find(lista,str[0][i]) % 10];
                     break;
                 }
                 lower = 1;
@@ -66,7 +66,7 @@ char *repair_alphanumeric(char **str)
     }
     return str[0];
 }
-char *encrypt_alphanumeric(char *word, char *key,unsigned int seed)
+char *encrypt_alphanumeric_symbol(char *word, char *key,unsigned int seed)
 {
     int charCount = 97;
     char firstChar = 33;
@@ -89,11 +89,13 @@ char *encrypt_alphanumeric(char *word, char *key,unsigned int seed)
             if(is_num(actualChar) || is_upper(actualChar) || is_lower(actualChar) )
         {
             lista[position] = actualChar;
+            printf("char %c\n",actualChar);
             position++;
         }
     }
     lista[count] = '\0';
-    printf("lista %s\n",lista );
+    printf("lista size: %i\n",count );
+    printf("lista: %s\n",lista );
     srand(seed);
     int len =  str_len(lista);
     int len1 = str_len(word);
@@ -133,7 +135,7 @@ char *encrypt_alphanumeric(char *word, char *key,unsigned int seed)
             results[NUMBER]="t";
         }
     }
-    printf("results %s\n",results[0] );
-    return (repair_alphanumeric(results));
+    
+    return (repair_alphanumeric_symbol(results));
     
 }

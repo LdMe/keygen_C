@@ -1,4 +1,5 @@
 #include "keygen_alphanumeric.h"
+#include "keygen_alphanumeric_symbol.h"
 #include "keygen.h" // classic
 int main(int argc, char **argv)
 {
@@ -9,7 +10,7 @@ int main(int argc, char **argv)
     char *pass1 =argv[1];
     char *pass2 =argv[2];
     unsigned int seed = 0;
-    //char *result = encrypt_alphanumeric(pass1,pass2,seed); //with seed
-    char *result = encrypt(pass1,pass2); //classic
+    char *result = encrypt_alphanumeric(pass1,pass2,seed); //with seed
+    //char *result = encrypt(pass1,pass2); //classic
     printf("%s", result);
 }
