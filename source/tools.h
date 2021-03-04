@@ -7,8 +7,8 @@
 
 
 int str_len(char*);
-int is_minus(char);
-int is_mayus(char);
+int is_lower(char);
+int is_upper(char);
 int is_num(char);
 void lower(char *);
 void upper(char*);

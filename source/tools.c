@@ -14,7 +14,7 @@ int str_len(char *str)
     }
     return (counter);
 }
-int is_minus(char c)
+int is_lower(char c)
 {
     if (c > 96 && c < 123) {
         return (1);
@@ -22,7 +22,7 @@ int is_minus(char c)
     return (0);
             
 }
-int is_mayus(char c)
+int is_upper(char c)
 {
     if (c > 64 && c < 91) {
         return (1);

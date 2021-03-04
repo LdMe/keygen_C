@@ -8,8 +8,8 @@ char *repair(char **str)
 {
 
     char *lista= "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if (str[1] == "f") { // mayus false
-        if (str[2] == "t") { // minus true
+    if (str[UPPER] == "f") { // upper false
+        if (str[LOWER] == "t") { // lower true
             for (int i = 0; i < str_len(str[0]); i++) {
                 if (is_num(str[0][i]) == 0) {
                     upper(&str[0][i]);
@@ -22,8 +22,8 @@ char *repair(char **str)
             
         }
     }
-    if ( str[2] == "f") {
-        if (str[1] == "t") { // minus true
+    if ( str[LOWER] == "f") {
+        if (str[UPPER] == "t") { // upper true
             for (int i = 0; i < str_len(str[0]); i++) {
                 if (is_num(str[0][i]) == 0) {
                     lower(&str[0][i]);
@@ -36,24 +36,24 @@ char *repair(char **str)
             
         }
     }
-    if (str[3] == "f") {
-        int may = 0;
-        int min = 0;
+    if (str[NUMBER] == "f") {
+        int upper = 0;
+        int lower = 0;
 
         for (int i = 0; i < str_len(str[0]);i++) {
-            if(is_mayus(str[0][i]) == 1) {
-                if (may == 1) {
+            if(is_upper(str[0][i]) == 1) {
+                if (upper == 1) {
                     str[0][i] = lista[find(lista,str[0][i]) % 10];
                     break;
                 }
-                may = 1;
+                upper = 1;
             }
             else {
-                if (min == 1) {
+                if (lower == 1) {
                     str[0][i] = lista[find(lista,str[0][i]) % 10];
                     break;
                 }
-                min = 1;
+                lower = 1;
             }
         }
     }
@@ -89,10 +89,10 @@ char *encrypt(char *word, char *key)
         y = find(lista, str2[i % len2]);
         int z= (mcd(y+1,x+1) * abs(x-y)) % len;
         results[0][i] =lista[z];
-        if (is_mayus(lista[z])) {
+        if (is_upper(lista[z])) {
             results[1]="t";
         }
-        if (is_minus(lista[z])) {
+        if (is_lower(lista[z])) {
             results[2]="t";
         }
         if (is_num(lista[z])) {
