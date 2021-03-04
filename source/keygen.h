@@ -6,6 +6,10 @@
 #include <stdio.h>
 #include "tools.h"
 
+#define UPPER 1
+#define LOWER 2
+#define NUMBER 3
+
 char *encrypt(char*, char*);
 char *repair(char **);
 
