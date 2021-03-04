@@ -84,16 +84,14 @@ char *encrypt_alphanumeric(char *word, char *key,unsigned int seed)
     int position = 0;
     for (int i = 0; i <= charCount ; i++)
     {
-        
         char actualChar = i + firstChar;
-            if(is_num(actualChar) || is_upper(actualChar) || is_lower(actualChar) )
+        if(is_num(actualChar) || is_upper(actualChar) || is_lower(actualChar) )
         {
             lista[position] = actualChar;
             position++;
         }
     }
     lista[count] = '\0';
-    printf("lista %s\n",lista );
     srand(seed);
     int len =  str_len(lista);
     int len1 = str_len(word);
@@ -133,7 +131,6 @@ char *encrypt_alphanumeric(char *word, char *key,unsigned int seed)
             results[NUMBER]="t";
         }
     }
-    printf("results %s\n",results[0] );
     return (repair_alphanumeric(results));
     
 }

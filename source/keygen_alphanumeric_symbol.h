@@ -9,6 +9,8 @@
 #define UPPER 1
 #define LOWER 2
 #define NUMBER 3
+#define SYMBOL 4
+#define ARRAY_SIZE 5
 
 char *encrypt_alphanumeric_symbol(char*, char*,unsigned int);
 char *repair_alphanumeric_symbol(char **);

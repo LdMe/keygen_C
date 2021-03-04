@@ -38,6 +38,14 @@ int is_num(char c)
     return (0);
             
 }
+int is_symbol(char c)
+{
+    if ( is_upper(c) || is_lower(c) || is_num(c)) {
+        return (0);
+    }
+    return (1);
+            
+}
 void lower(char *a)
 {
     *a = *a + 32;
