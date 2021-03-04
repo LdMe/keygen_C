@@ -4,7 +4,7 @@
 ** main keygen functions
 */
 #include "keygen.h"
-char *repair(char **str)
+char *repair_classic(char **str)
 {
 
     char *lista= "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -59,7 +59,7 @@ char *repair(char **str)
     }
     return str[0];
 }
-char *encrypt(char *word, char *key)
+char *encrypt_classic(char *word, char *key)
 {
 
     char *lista= "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -100,6 +100,6 @@ char *encrypt(char *word, char *key)
         }
     }
     
-    return (repair(results));
+    return (repair_classic(results));
     
 }
