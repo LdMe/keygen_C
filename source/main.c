@@ -18,6 +18,9 @@ int main(int argc, char **argv)
     	if ( argc > 4) {
     		length = atoi(argv[4]);
     	}
+    	if ( argc > 5) {
+    		seed = atoi(argv[5]);
+    	}
     	if(strcmp(argv[3], "n") == 0) {
     		result = encrypt_numeric(pass1,pass2,seed, length); //numeric
     	}
