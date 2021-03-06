@@ -5,7 +5,7 @@
 */
 #include "keygen_alphanumeric_symbol.h"
 
-char *encrypt_alphanumeric_symbol(char *word, char *key,unsigned int seed)
+char *encrypt_alphanumeric_symbol(char *word, char *key,unsigned int seed, int length)
 {
     int charCount = 97;
     char firstChar = 33;
@@ -18,7 +18,7 @@ char *encrypt_alphanumeric_symbol(char *word, char *key,unsigned int seed)
         lista[i] = actualChar;
     }
     lista[charCount] = '\0';
-    char **results = encrypt(word, key, lista, seed);
+    char **results = encrypt_fixed_length(word, key, lista, seed,length);
     return (repair(results));
     
 }

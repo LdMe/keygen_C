@@ -6,6 +6,6 @@
 #include <stdio.h>
 #include "tools.h"
 
-char *encrypt_alphanumeric(char*, char*,unsigned int);
+char *encrypt_alphanumeric(char*, char*,unsigned int, int);
 
 #endif
