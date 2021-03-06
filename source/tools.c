@@ -95,6 +95,17 @@ int mcd(int x, int y)
 	}
 	return -1;
 }
+int sum(char *str)
+{
+	int result = 0;
+	int pos = 0;
+	while( str[pos] != '\0') {
+		result += str[pos];
+		pos++;
+	}
+	printf("word:%s sum: %i\n",str,result);
+	return result;
+}
 int is_type(char c, unsigned int type) {
 	switch (type){
 		case UPPER:
@@ -239,5 +250,43 @@ char **encrypt(char *word, char *key,char *lista,unsigned int seed)
         }
     }
     return results;
-    
+}
+char **encrypt_fixed_length(char *word, char *key,char *lista,unsigned int seed,int resultLen)
+{
+    srand(seed);
+    int listaLen =  str_len(lista);
+    int wordLen = str_len(word);
+    int keyLen = str_len(key);
+    char **results = malloc(sizeof(char*) * ARRAY_SIZE);
+    for (int i = 1; i < ARRAY_SIZE; i++) {
+        results[i] = malloc(sizeof(char) * 2);
+        results[i] = "f";
+    }
+    results[0] = malloc(sizeof(char) * (resultLen + 1));
+    int randX = rand() % 100;
+    int randY = rand() % 100;
+    printf("randX: %i, randY: %i\n", randX, randY);
+    int sumX = sum(word);
+    int sumY = sum(key);
+    for (int  i = 0; i < resultLen; i++) {
+        int x = word[i   % wordLen] + sumX +randX;
+        int y = key[i  % keyLen] + sumY +randY;
+        int z = ( mcd(y,x) * abs(x-y)) % listaLen;
+        printf("x: %i y: %i z: %i mcd: %i\n",x,y,z , mcd(y+randY,x+randX));
+        results[0][i] = lista[z];
+        if (is_upper(lista[z])) {
+            results[UPPER] = "t";
+        }
+        if (is_lower(lista[z])) {
+            results[LOWER] = "t";
+        }
+        if (is_num(lista[z])) {
+            results[NUMBER] = "t";
+        }
+        if (is_symbol(lista[z])) {
+            results[SYMBOL] = "t";
+        }
+    }
+    results[0][resultLen] ='\0';
+    return results;
 }
