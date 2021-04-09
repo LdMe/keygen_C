@@ -31,6 +31,7 @@ int find(char*, char);
 int mcd(int, int);
 char *repair(char**);
 char **encrypt(char*, char*,char*,unsigned int);
+char **encrypt_fixed_length(char*, char*,char*,unsigned int,int);
 
 
 #endif

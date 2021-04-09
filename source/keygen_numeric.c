@@ -3,13 +3,12 @@
 ** File description:
 ** main keygen functions
 */
-#include "keygen_alphanumeric_symbol.h"
+#include "keygen_numeric.h"
 
-char *encrypt_alphanumeric_symbol(char *word, char *key,unsigned int seed, int length)
+char *encrypt_numeric(char *word, char *key,unsigned int seed, int length)
 {
-    int charCount = 97;
-    char firstChar = 33;
-    
+    int charCount = 10;
+    char firstChar = 48;
 
     char *lista = malloc(sizeof(char) * (charCount + 1));
     for (int i = 0; i <= charCount ; i++)
@@ -19,6 +18,6 @@ char *encrypt_alphanumeric_symbol(char *word, char *key,unsigned int seed, int l
     }
     lista[charCount] = '\0';
     char **results = encrypt_fixed_length(word, key, lista, seed,length);
-    return (repair(results));
+    return (results[0]);
     
 }
