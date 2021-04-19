@@ -70,6 +70,19 @@ for (( i = 0; i < $#; i++ )); do
 
 
 done
+if [[ $# == 0 ]]; then
+    echo "Type: c, n, an, ans [c]"
+    read type
+    type=${type:-"c"}
+    if [[ $type != "c" ]]; then
+        echo "Length [8]"
+        read length
+        length=${length:-8}
+        echo "seed [1]"
+        read seed
+        seed=${seed:-1}
+    fi
+fi
 if [[ $word == "" ]]; then
     echo "Public password:"
     read word
